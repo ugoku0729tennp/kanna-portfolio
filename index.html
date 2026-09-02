@@ -7,14 +7,19 @@
 <title>KANNA MAEDA — Interactive Resume</title>
 
 <style>
+
+/* =====================================================
+   BASE
+===================================================== */
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500&display=swap');
 
 :root{
   --bg:#f7f7f4;
-  --white:#ffffff;
-  --black:#111111;
+  --white:#fff;
+  --black:#111;
   --gray:#777;
-  --light:#dcdcd7;
+  --light:#d9d9d4;
   --soft:#ecece7;
 }
 
@@ -30,10 +35,12 @@ body{
   margin:0;
   background:var(--bg);
   color:var(--black);
+
   font-family:
     Inter,
     "Noto Sans JP",
     sans-serif;
+
   overflow-x:hidden;
 }
 
@@ -42,10 +49,15 @@ body{
   color:#fff;
 }
 
+a{
+  color:inherit;
+  text-decoration:none;
+}
 
-/* ==================================================
+
+/* =====================================================
    HEADER
-================================================== */
+===================================================== */
 
 header{
   position:fixed;
@@ -65,7 +77,7 @@ header{
 
   border-bottom:1px solid rgba(0,0,0,.12);
 
-  background:rgba(247,247,244,.82);
+  background:rgba(247,247,244,.84);
   backdrop-filter:blur(18px);
 }
 
@@ -104,9 +116,9 @@ header{
 }
 
 
-/* ==================================================
+/* =====================================================
    COMMON
-================================================== */
+===================================================== */
 
 section{
   position:relative;
@@ -121,16 +133,23 @@ section{
 }
 
 .section-heading{
-  font-size:clamp(45px,7vw,105px);
-  line-height:.9;
-  font-weight:400;
-  letter-spacing:-.065em;
   margin:0;
+
+  font-size:
+    clamp(45px,7vw,105px);
+
+  line-height:.9;
+
+  font-weight:400;
+
+  letter-spacing:-.065em;
 }
 
 .reveal{
   opacity:0;
+
   transform:translateY(35px);
+
   transition:
     opacity .9s ease,
     transform 1s cubic-bezier(.2,.7,.2,1);
@@ -142,9 +161,9 @@ section{
 }
 
 
-/* ==================================================
+/* =====================================================
    HERO
-================================================== */
+===================================================== */
 
 .hero{
   min-height:100vh;
@@ -161,6 +180,7 @@ section{
   width:100%;
 
   display:grid;
+
   grid-template-columns:
     1fr 1fr;
 
@@ -170,7 +190,7 @@ section{
 }
 
 
-/* 左側 */
+/* left */
 
 .hero-copy{
   padding-left:2vw;
@@ -178,20 +198,25 @@ section{
 
 .hero-kicker{
   font-size:10px;
+
   letter-spacing:.2em;
+
   color:#888;
+
   margin-bottom:30px;
 }
 
 .hero-kan-na{
+  margin:0 0 28px;
+
   font-size:
     clamp(75px,11vw,170px);
 
   font-weight:500;
-  letter-spacing:-.09em;
+
   line-height:.75;
 
-  margin:0 0 28px;
+  letter-spacing:-.09em;
 }
 
 .hero-japanese{
@@ -211,7 +236,9 @@ section{
 
 .hero-roman{
   font-size:10px;
+
   letter-spacing:.35em;
+
   color:#888;
 
   margin-bottom:65px;
@@ -231,7 +258,42 @@ section{
 }
 
 
-/* 右側写真 */
+/* profile */
+
+.profile-data{
+  margin-top:40px;
+
+  border-top:1px solid var(--light);
+}
+
+.profile-row{
+  min-height:52px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  border-bottom:1px solid var(--light);
+}
+
+.profile-row span:first-child{
+  font-size:8px;
+
+  letter-spacing:.18em;
+
+  color:#888;
+}
+
+.profile-row span:last-child{
+  font-size:11px;
+
+  text-align:right;
+}
+
+
+/* image */
 
 .hero-image-wrap{
   position:relative;
@@ -239,6 +301,7 @@ section{
 
 .hero-image{
   width:100%;
+
   aspect-ratio:1 / 1.12;
 
   border-radius:22px;
@@ -253,6 +316,7 @@ section{
   height:100%;
 
   object-fit:cover;
+
   object-position:center;
 
   display:block;
@@ -267,46 +331,18 @@ section{
   padding:12px 18px;
 
   background:#111;
+
   color:#fff;
 
   font-size:9px;
+
   letter-spacing:.15em;
 }
 
 
-/* profile data */
-
-.profile-data{
-  margin-top:40px;
-
-  border-top:1px solid var(--light);
-}
-
-.profile-row{
-  min-height:52px;
-
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-
-  border-bottom:1px solid var(--light);
-}
-
-.profile-row span:first-child{
-  font-size:8px;
-  letter-spacing:.18em;
-  color:#888;
-}
-
-.profile-row span:last-child{
-  font-size:11px;
-  text-align:right;
-}
-
-
-/* ==================================================
+/* =====================================================
    INTRO
-================================================== */
+===================================================== */
 
 .intro{
   padding-top:80px;
@@ -316,12 +352,11 @@ section{
 .intro-box{
   width:100%;
 
-  padding:
-    70px 7vw;
+  padding:70px 7vw;
 
   border-radius:32px;
 
-  background:#ecece8;
+  background:var(--soft);
 
   display:grid;
 
@@ -350,14 +385,16 @@ section{
 
 .intro-side{
   font-size:13px;
+
   line-height:2.2;
+
   color:#666;
 }
 
 
-/* ==================================================
+/* =====================================================
    JOURNEY
-================================================== */
+===================================================== */
 
 .journey{
   padding-top:100px;
@@ -384,9 +421,6 @@ section{
   color:#777;
 }
 
-
-/* 円形タイムライン */
-
 .journey-track{
   position:relative;
 
@@ -401,13 +435,11 @@ section{
   justify-content:space-between;
 }
 
-
-/* horizontal line */
-
 .journey-line{
   position:absolute;
 
   top:190px;
+
   left:7%;
   right:7%;
 
@@ -415,7 +447,6 @@ section{
 
   background:#cfcfca;
 }
-
 
 .journey-item{
   position:relative;
@@ -430,9 +461,6 @@ section{
 
   align-items:center;
 }
-
-
-/* circle */
 
 .journey-circle{
   width:
@@ -462,8 +490,7 @@ section{
     border-color .45s ease;
 }
 
-.journey-item:hover
-.journey-circle{
+.journey-item:hover .journey-circle{
   transform:scale(1.06);
 
   background:#fff;
@@ -507,9 +534,6 @@ section{
   max-width:120px;
 }
 
-
-/* stagger */
-
 .journey-item:nth-child(2){
   margin-top:80px;
 }
@@ -530,18 +554,14 @@ section{
   margin-top:90px;
 }
 
-
-/* current */
-
-.journey-item.current
-.journey-circle{
-  border:1px solid #111;
+.journey-item.current .journey-circle{
+  border-color:#111;
 }
 
 
-/* ==================================================
+/* =====================================================
    THINKING
-================================================== */
+===================================================== */
 
 .thinking{
   background:#111;
@@ -594,9 +614,6 @@ section{
 
   color:#888;
 }
-
-
-/* WHY diagram */
 
 .thinking-diagram{
   position:relative;
@@ -709,9 +726,9 @@ section{
 }
 
 
-/* ==================================================
+/* =====================================================
    EXPERIENCE
-================================================== */
+===================================================== */
 
 .experience{
   padding-top:140px;
@@ -723,9 +740,6 @@ section{
   margin-bottom:80px;
 }
 
-
-/* cards */
-
 .experience-grid{
   display:grid;
 
@@ -736,7 +750,7 @@ section{
 }
 
 .experience-card{
-  min-height:260px;
+  min-height:270px;
 
   border:1px solid #d5d5d0;
 
@@ -826,12 +840,12 @@ section{
 }
 
 
-/* ==================================================
+/* =====================================================
    STRENGTH
-================================================== */
+===================================================== */
 
 .strength{
-  background:#ecece8;
+  background:var(--soft);
 }
 
 .strength-head{
@@ -872,7 +886,7 @@ section{
 
   padding:30px;
 
-  background:#f7f7f4;
+  background:var(--bg);
 
   transition:.4s;
 }
@@ -895,7 +909,6 @@ section{
 
 .strength-circle{
   width:58px;
-
   height:58px;
 
   margin-top:35px;
@@ -934,9 +947,9 @@ section{
 }
 
 
-/* ==================================================
+/* =====================================================
    CURIOSITY
-================================================== */
+===================================================== */
 
 .curiosity{
   min-height:85vh;
@@ -1023,9 +1036,9 @@ section{
 }
 
 
-/* ==================================================
+/* =====================================================
    INTEREST
-================================================== */
+===================================================== */
 
 .interest{
   padding-bottom:170px;
@@ -1047,13 +1060,11 @@ section{
   max-width:1050px;
 
   margin-left:auto;
-
   margin-right:auto;
 }
 
 .interest-pill{
-  padding:
-    18px 30px;
+  padding:18px 30px;
 
   border:1px solid #d2d2cd;
 
@@ -1077,9 +1088,9 @@ section{
 }
 
 
-/* ==================================================
+/* =====================================================
    QUESTION
-================================================== */
+===================================================== */
 
 .question{
   padding:
@@ -1125,9 +1136,9 @@ section{
 }
 
 
-/* ==================================================
+/* =====================================================
    SUZUKAN
-================================================== */
+===================================================== */
 
 .suzukan{
   min-height:85vh;
@@ -1175,9 +1186,6 @@ section{
   font-weight:500;
 }
 
-
-/* four circles */
-
 .suzukan-flow{
   margin-top:50px;
 
@@ -1219,15 +1227,15 @@ section{
 }
 
 
-/* ==================================================
+/* =====================================================
    MOTTO
-================================================== */
+===================================================== */
 
 .motto{
   padding:
     130px 6vw;
 
-  background:#ecece8;
+  background:var(--soft);
 
   text-align:center;
 }
@@ -1258,9 +1266,9 @@ section{
 }
 
 
-/* ==================================================
+/* =====================================================
    FOOTER
-================================================== */
+===================================================== */
 
 footer{
   padding:
@@ -1294,197 +1302,885 @@ footer{
 }
 
 
-/* ==================================================
-   MOBILE
-================================================== */
+/* =====================================================
+   📱 SMARTPHONE DESIGN
+===================================================== */
 
 @media(max-width:800px){
 
+  body{
+    width:100%;
+  }
+
+
+  /* -----------------------------------------------
+     MOBILE HEADER
+  ----------------------------------------------- */
+
   header{
-    padding:0 20px;
+    height:54px;
+
+    padding:
+      0 18px;
+  }
+
+  .header-left{
+    gap:12px;
+  }
+
+  .header-name{
+    font-size:12px;
+  }
+
+  .header-label{
+    font-size:7px;
   }
 
   .header-nav{
     display:none;
   }
 
+
+  /* -----------------------------------------------
+     COMMON
+  ----------------------------------------------- */
+
   section{
     padding:
-      90px 24px;
+      90px 20px;
   }
 
+  .section-number{
+    font-size:8px;
+
+    margin-bottom:22px;
+  }
+
+  .section-heading{
+    font-size:
+      clamp(48px,15vw,75px);
+
+    line-height:.9;
+  }
+
+
+  /* -----------------------------------------------
+     MOBILE HERO
+  ----------------------------------------------- */
+
   .hero{
+
     min-height:auto;
 
     padding:
-      100px 24px 80px;
+      100px 20px
+      65px;
+
+    display:block;
   }
 
   .hero-grid{
-    grid-template-columns:1fr;
 
-    gap:50px;
+    display:flex;
+
+    flex-direction:column;
+
+    gap:40px;
   }
 
+  /*
+    スマホでは
+
+    KANNA
+    前田 栞那
+    写真
+
+    の順番
+  */
+
   .hero-copy{
-    padding-left:0;
+    order:1;
+
+    padding:0;
+
+    width:100%;
+  }
+
+  .hero-image-wrap{
+    order:2;
+
+    width:100%;
+  }
+
+  .hero-kicker{
+    font-size:8px;
+
+    margin-bottom:25px;
   }
 
   .hero-kan-na{
-    font-size:90px;
+
+    font-size:
+      clamp(85px,27vw,120px);
+
+    line-height:.72;
+
+    margin-bottom:28px;
   }
 
   .hero-japanese{
-    font-size:40px;
+
+    font-size:
+      clamp(36px,11vw,52px);
+
+    margin-bottom:12px;
+  }
+
+  .hero-roman{
+    font-size:8px;
+
+    letter-spacing:.28em;
+
+    margin-bottom:40px;
   }
 
   .hero-statement{
-    font-size:21px;
+
+    font-size:
+      clamp(21px,6vw,28px);
+
+    line-height:1.65;
+
+    max-width:100%;
+  }
+
+  .profile-data{
+    margin-top:35px;
+  }
+
+  .profile-row{
+    min-height:55px;
+  }
+
+  .profile-row span:first-child{
+    font-size:7px;
+  }
+
+  .profile-row span:last-child{
+    font-size:10px;
+
+    max-width:65%;
+
+    line-height:1.5;
+  }
+
+  .hero-image{
+
+    aspect-ratio:
+      1 / 1.15;
+
+    border-radius:20px;
+  }
+
+  .hero-image-label{
+
+    right:12px;
+
+    bottom:12px;
+
+    padding:
+      10px 13px;
+
+    font-size:8px;
+  }
+
+
+  /* -----------------------------------------------
+     MOBILE INTRO
+  ----------------------------------------------- */
+
+  .intro{
+    padding:
+      35px 20px
+      90px;
   }
 
   .intro-box{
-    grid-template-columns:1fr;
 
-    gap:35px;
+    display:block;
 
-    padding:45px 28px;
+    padding:
+      42px 26px;
 
     border-radius:25px;
   }
 
+  .intro-main{
+
+    font-size:
+      clamp(29px,8.5vw,40px);
+
+    line-height:1.5;
+  }
+
+  .intro-side{
+
+    margin-top:35px;
+
+    font-size:12px;
+
+    line-height:2.1;
+  }
+
+
+  /* -----------------------------------------------
+     MOBILE JOURNEY
+  ----------------------------------------------- */
+
+  .journey{
+    padding:
+      90px 20px
+      110px;
+  }
+
   .journey-head{
     display:block;
+
+    margin-bottom:60px;
   }
 
   .journey-description{
+
+    margin-top:30px;
+
+    font-size:11px;
+
+    line-height:2;
+  }
+
+
+  /*
+    PCの横一列を完全にやめる
+
+    ○
+    │
+    ○
+    │
+    ○
+
+    に変更
+  */
+
+  .journey-track{
+
+    min-height:auto;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:flex-start;
+
+    gap:0;
+
+    padding-left:8px;
+  }
+
+  .journey-line{
+
+    display:block;
+
+    top:50px;
+
+    bottom:50px;
+
+    left:30px;
+
+    right:auto;
+
+    width:1px;
+
+    height:auto;
+  }
+
+  .journey-item,
+  .journey-item:nth-child(2),
+  .journey-item:nth-child(3),
+  .journey-item:nth-child(4),
+  .journey-item:nth-child(5),
+  .journey-item:nth-child(6){
+
+    width:100%;
+
+    margin:0;
+
+    min-height:155px;
+
+    display:flex;
+
+    flex-direction:row;
+
+    align-items:flex-start;
+
+    gap:25px;
+  }
+
+  .journey-circle{
+
+    flex-shrink:0;
+
+    width:60px;
+
+    height:60px;
+
+    aspect-ratio:auto;
+
+    background:var(--bg);
+
+    position:relative;
+
+    z-index:3;
+  }
+
+  .journey-year{
+
+    font-size:6px;
+
+    margin-bottom:5px;
+  }
+
+  .journey-title{
+
+    font-size:10px;
+  }
+
+  .journey-note{
+
+    margin:7px 0 0;
+
+    max-width:190px;
+
+    text-align:left;
+
+    font-size:10px;
+
+    line-height:1.8;
+  }
+
+
+  /* -----------------------------------------------
+     MOBILE THINKING
+  ----------------------------------------------- */
+
+  .thinking{
+
+    min-height:auto;
+
+    padding:
+      100px 20px;
+  }
+
+  .thinking-layout{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:65px;
+  }
+
+  .thinking-copy{
+
+    font-size:
+      clamp(31px,9vw,44px);
+
+    line-height:1.4;
+  }
+
+  .thinking-detail{
+
+    font-size:11px;
+
+    line-height:2;
+
+    margin-top:28px;
+  }
+
+  .thinking-diagram{
+
+    width:
+      min(92vw,420px);
+
+    margin:auto;
+  }
+
+  .why-center{
+
+    width:105px;
+
+    height:105px;
+  }
+
+  .why-big{
+    font-size:22px;
+  }
+
+  .why-small{
+    font-size:7px;
+  }
+
+  .think-node{
+
+    padding:
+      10px 14px;
+
+    font-size:8px;
+  }
+
+  .node-1{
+    top:2%;
+    left:39%;
+  }
+
+  .node-2{
+    right:0;
+    top:45%;
+  }
+
+  .node-3{
+    bottom:2%;
+    left:34%;
+  }
+
+  .node-4{
+    left:0;
+    top:45%;
+  }
+
+
+  /* -----------------------------------------------
+     MOBILE EXPERIENCE
+  ----------------------------------------------- */
+
+  .experience{
+
+    padding:
+      90px 20px
+      100px;
+  }
+
+  .experience-head{
+
+    margin-bottom:55px;
+  }
+
+  .experience-grid{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:16px;
+  }
+
+  .experience-card{
+
+    min-height:235px;
+
+    padding:25px;
+
+    border-radius:24px;
+  }
+
+  .experience-company{
+
     margin-top:35px;
   }
 
-  .journey-track{
+  .experience-company strong{
+
+    font-size:13px;
+  }
+
+  .experience-role{
+
+    font-size:23px;
+  }
+
+
+  /* -----------------------------------------------
+     MOBILE STRENGTH
+  ----------------------------------------------- */
+
+  .strength{
+
+    padding:
+      90px 20px
+      100px;
+  }
+
+  .strength-head{
+
+    display:block;
+
+    margin-bottom:60px;
+  }
+
+  .strength-description{
+
+    margin-top:30px;
+
+    font-size:11px;
+
+    line-height:2;
+  }
+
+  .strength-grid{
+
+    grid-template-columns:
+      1fr 1fr;
+
+    gap:12px;
+  }
+
+  .strength-card{
+
+    min-height:185px;
+
+    padding:20px;
+
+    border-radius:22px;
+  }
+
+  .strength-circle{
+
+    width:50px;
+
+    height:50px;
+
+    margin-top:25px;
+  }
+
+  .strength-level{
+
+    font-size:8px;
+  }
+
+  .strength-name{
+
+    margin-top:20px;
+
+    font-size:14px;
+
+    line-height:1.3;
+  }
+
+  .strength-note{
+
+    font-size:9px;
+
+    line-height:1.5;
+  }
+
+
+  /* -----------------------------------------------
+     MOBILE CURIOSITY
+  ----------------------------------------------- */
+
+  .curiosity{
+
+    min-height:auto;
+
+    display:block;
+
+    padding:
+      90px 20px
+      110px;
+  }
+
+  .curiosity-grid{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:55px;
+  }
+
+  .curiosity-title{
+
+    font-size:
+      clamp(52px,15vw,75px);
+
+    line-height:.98;
+  }
+
+  .curiosity-row{
+
+    padding:20px 0;
+
+    grid-template-columns:
+      58px 1fr;
+
+    gap:15px;
+  }
+
+  .curiosity-symbol{
+
+    width:45px;
+    height:45px;
+
+    font-size:17px;
+  }
+
+  .curiosity-name{
+
+    font-size:14px;
+  }
+
+  .curiosity-text{
+
+    font-size:9px;
+
+    line-height:1.6;
+  }
+
+
+  /* -----------------------------------------------
+     MOBILE INTEREST
+  ----------------------------------------------- */
+
+  .interest{
+
+    padding:
+      90px 20px
+      110px;
+  }
+
+  /*
+     横スクロールする丸いタグ
+  */
+
+  .interest-cloud{
+
+    justify-content:flex-start;
+
+    flex-wrap:nowrap;
+
+    overflow-x:auto;
+
+    max-width:none;
+
+    margin-top:55px;
+
+    padding:
+      5px 0 18px;
+
+    gap:12px;
+
+    -webkit-overflow-scrolling:touch;
+
+    scrollbar-width:none;
+  }
+
+  .interest-cloud::-webkit-scrollbar{
+    display:none;
+  }
+
+  .interest-pill{
+
+    flex-shrink:0;
+
+    padding:
+      16px 23px;
+
+    font-size:10px;
+  }
+
+
+  /* -----------------------------------------------
+     MOBILE QUESTION
+  ----------------------------------------------- */
+
+  .question{
+
+    padding:
+      95px 20px;
+
+    border-radius:
+      25px 25px 0 0;
+  }
+
+  .question-mark{
+
+    font-size:70px;
+
+    margin-bottom:35px;
+  }
+
+  .question-text{
+
+    font-size:
+      clamp(32px,9vw,45px);
+
+    line-height:1.4;
+  }
+
+
+  /* -----------------------------------------------
+     MOBILE SUZUKAN
+  ----------------------------------------------- */
+
+  .suzukan{
+
+    min-height:auto;
+
+    padding:
+      100px 20px;
+  }
+
+  .suzukan-grid{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:55px;
+  }
+
+  .suzukan-title{
+
+    font-size:
+      clamp(55px,16vw,80px);
+  }
+
+  .suzukan-copy{
+
+    font-size:12px;
+
+    line-height:2.2;
+  }
+
+  /*
+     スマホでは4つの円を
+     2 × 2 にする
+  */
+
+  .suzukan-flow{
+
     display:grid;
 
     grid-template-columns:
       1fr 1fr;
 
-    gap:35px 12px;
+    gap:12px;
 
-    min-height:auto;
-  }
-
-  .journey-line{
-    display:none;
-  }
-
-  .journey-item,
-  .journey-item:nth-child(n){
-    width:100%;
-
-    margin:0;
-  }
-
-  .journey-circle{
-    width:
-      min(42vw,170px);
-  }
-
-  .journey-note{
-    margin-top:12px;
-  }
-
-  .thinking-layout{
-    grid-template-columns:1fr;
-
-    gap:70px;
-  }
-
-  .thinking-diagram{
-    width:90vw;
-  }
-
-  .experience-grid{
-    grid-template-columns:1fr;
-  }
-
-  .strength-head{
-    display:block;
-  }
-
-  .strength-description{
-    margin-top:35px;
-  }
-
-  .strength-grid{
-    grid-template-columns:1fr 1fr;
-
-    gap:15px;
-  }
-
-  .strength-card{
-    min-height:190px;
-
-    padding:22px;
-  }
-
-  .strength-circle{
-    margin-top:25px;
-  }
-
-  .curiosity-grid{
-    grid-template-columns:1fr;
-
-    gap:60px;
-  }
-
-  .curiosity-title{
-    font-size:60px;
-  }
-
-  .interest-cloud{
-    margin-top:60px;
-  }
-
-  .question{
-    border-radius:
-      25px 25px 0 0;
-
-    padding:
-      90px 24px;
-  }
-
-  .question-mark{
-    font-size:70px;
-  }
-
-  .suzukan-grid{
-    grid-template-columns:1fr;
-
-    gap:60px;
-  }
-
-  .suzukan-flow{
-    gap:5px;
+    margin-top:40px;
   }
 
   .suzukan-node{
-    width:70px;
-    font-size:8px;
+
+    width:100%;
+
+    max-width:120px;
+
+    justify-self:center;
+
+    font-size:9px;
   }
+
+  .suzukan-dot{
+    display:none;
+  }
+
+
+  /* -----------------------------------------------
+     MOBILE MOTTO
+  ----------------------------------------------- */
 
   .motto{
+
     padding:
-      100px 24px;
+      100px 20px;
   }
 
-  footer{
-    padding:
-      25px 20px;
+  .motto-label{
+
+    margin-bottom:35px;
   }
+
+  .motto-text{
+
+    font-size:
+      clamp(31px,9vw,45px);
+
+    line-height:1.6;
+  }
+
+
+  /* -----------------------------------------------
+     MOBILE FOOTER
+  ----------------------------------------------- */
+
+  footer{
+
+    padding:
+      24px 20px;
+
+    display:block;
+  }
+
+  .footer-left{
+
+    font-size:7px;
+  }
+
+  .footer-right{
+
+    margin-top:8px;
+
+    font-size:7px;
+  }
+
 }
 
 
-/* ==================================================
+/* =====================================================
+   VERY SMALL PHONES
+===================================================== */
+
+@media(max-width:380px){
+
+  .hero-kan-na{
+    font-size:80px;
+  }
+
+  .hero-japanese{
+    font-size:34px;
+  }
+
+  .strength-grid{
+    gap:8px;
+  }
+
+  .strength-card{
+    padding:16px;
+  }
+
+  .strength-name{
+    font-size:13px;
+  }
+
+  .journey-note{
+    max-width:160px;
+  }
+
+}
+
+
+/* =====================================================
    REDUCED MOTION
-================================================== */
+===================================================== */
 
 @media(prefers-reduced-motion:reduce){
 
@@ -1493,6 +2189,7 @@ footer{
   }
 
   .reveal{
+
     opacity:1;
 
     transform:none;
@@ -1509,9 +2206,9 @@ footer{
 <body>
 
 
-<!-- ==================================================
+<!-- =====================================================
      HEADER
-================================================== -->
+===================================================== -->
 
 <header>
 
@@ -1548,9 +2245,9 @@ footer{
 
 
 
-<!-- ==================================================
-     01 HERO
-================================================== -->
+<!-- =====================================================
+     01 PROFILE
+===================================================== -->
 
 <section class="hero" id="about">
 
@@ -1589,36 +2286,52 @@ footer{
 
         <div class="profile-row">
 
-          <span>UNIVERSITY</span>
+          <span>
+            UNIVERSITY
+          </span>
 
-          <span>ZEN大学</span>
-
-        </div>
-
-
-        <div class="profile-row">
-
-          <span>FIELD</span>
-
-          <span>AI / DATA</span>
+          <span>
+            ZEN大学
+          </span>
 
         </div>
 
 
         <div class="profile-row">
 
-          <span>INTEREST</span>
+          <span>
+            FIELD
+          </span>
 
-          <span>HUMAN / WELFARE / SOCIAL DESIGN</span>
+          <span>
+            AI / DATA
+          </span>
 
         </div>
 
 
         <div class="profile-row">
 
-          <span>BASE</span>
+          <span>
+            INTEREST
+          </span>
 
-          <span>兵庫県</span>
+          <span>
+            HUMAN / WELFARE / SOCIAL DESIGN
+          </span>
+
+        </div>
+
+
+        <div class="profile-row">
+
+          <span>
+            BASE
+          </span>
+
+          <span>
+            兵庫県
+          </span>
 
         </div>
 
@@ -1652,9 +2365,9 @@ footer{
 
 
 
-<!-- ==================================================
-     ABOUT
-================================================== -->
+<!-- =====================================================
+     INTRO
+===================================================== -->
 
 <section class="intro">
 
@@ -1689,9 +2402,9 @@ footer{
 
 
 
-<!-- ==================================================
+<!-- =====================================================
      02 JOURNEY
-================================================== -->
+===================================================== -->
 
 <section class="journey" id="journey">
 
@@ -1871,9 +2584,9 @@ footer{
 
 
 
-<!-- ==================================================
+<!-- =====================================================
      03 THINKING
-================================================== -->
+===================================================== -->
 
 <section class="thinking" id="thinking">
 
@@ -1955,9 +2668,9 @@ footer{
 
 
 
-<!-- ==================================================
+<!-- =====================================================
      04 EXPERIENCE
-================================================== -->
+===================================================== -->
 
 <section class="experience" id="experience">
 
@@ -1977,8 +2690,6 @@ footer{
 
   <div class="experience-grid">
 
-
-    <!-- PIZZA-LA -->
 
     <div class="experience-card reveal">
 
@@ -2022,8 +2733,6 @@ footer{
 
 
 
-    <!-- B型 -->
-
     <div class="experience-card reveal">
 
       <div class="experience-card-top">
@@ -2065,8 +2774,6 @@ footer{
     </div>
 
 
-
-    <!-- Mental Health Lab -->
 
     <div class="experience-card reveal">
 
@@ -2115,9 +2822,9 @@ footer{
 
 
 
-<!-- ==================================================
+<!-- =====================================================
      05 STRENGTH
-================================================== -->
+===================================================== -->
 
 <section class="strength">
 
@@ -2300,9 +3007,9 @@ footer{
 
 
 
-<!-- ==================================================
+<!-- =====================================================
      06 CURIOSITY
-================================================== -->
+===================================================== -->
 
 <section class="curiosity">
 
@@ -2318,7 +3025,10 @@ footer{
       <div class="curiosity-title">
 
         好奇心が、<br>
-        <span>私のエンジン。</span>
+
+        <span>
+          私のエンジン。
+        </span>
 
       </div>
 
@@ -2401,9 +3111,9 @@ footer{
 
 
 
-<!-- ==================================================
+<!-- =====================================================
      07 INTEREST
-================================================== -->
+===================================================== -->
 
 <section class="interest" id="interest">
 
@@ -2412,8 +3122,10 @@ footer{
   </div>
 
   <h2 class="section-heading reveal">
+
     THINGS<br>
     I CARE ABOUT.
+
   </h2>
 
 
@@ -2465,9 +3177,9 @@ footer{
 
 
 
-<!-- ==================================================
+<!-- =====================================================
      08 QUESTION
-================================================== -->
+===================================================== -->
 
 <section class="question">
 
@@ -2490,7 +3202,10 @@ footer{
       </span><br>
 
       仕組みとして<br>
-      解決できるのか。
+
+      <span>
+        解決できるのか。
+      </span>
 
     </div>
 
@@ -2500,9 +3215,9 @@ footer{
 
 
 
-<!-- ==================================================
+<!-- =====================================================
      09 SUZUKAN
-================================================== -->
+===================================================== -->
 
 <section class="suzukan" id="suzukan">
 
@@ -2588,9 +3303,9 @@ footer{
 
 
 
-<!-- ==================================================
+<!-- =====================================================
      10 MOTTO
-================================================== -->
+===================================================== -->
 
 <section class="motto">
 
@@ -2613,9 +3328,9 @@ footer{
 
 
 
-<!-- ==================================================
+<!-- =====================================================
      FOOTER
-================================================== -->
+===================================================== -->
 
 <footer>
 
@@ -2633,9 +3348,9 @@ footer{
 
 <script>
 
-/* ================================================
+/* =====================================================
    SCROLL REVEAL
-================================================ */
+===================================================== */
 
 const revealElements =
 document.querySelectorAll(".reveal");
@@ -2673,9 +3388,9 @@ revealElements.forEach((element) => {
 });
 
 
-/* ================================================
-   SUBTLE IMAGE PARALLAX
-================================================ */
+/* =====================================================
+   HERO PARALLAX
+===================================================== */
 
 const image =
 document.querySelector(".hero-image");
@@ -2684,39 +3399,56 @@ window.addEventListener("scroll", () => {
 
   if(!image) return;
 
+  /*
+    スマホではパララックスを弱くする
+  */
+
+  const isMobile =
+    window.innerWidth <= 800;
+
+  const speed =
+    isMobile ? 0.008 : 0.025;
+
   const scroll =
     window.scrollY;
 
   if(scroll < window.innerHeight){
 
     image.style.transform =
-      `translateY(${scroll * 0.025}px)`;
+      `translateY(${scroll * speed}px)`;
 
   }
 
 });
 
 
-/* ================================================
-   ACTIVE NAV
-================================================ */
+/* =====================================================
+   MOBILE INTEREST TOUCH
+===================================================== */
 
-const navLinks =
-document.querySelectorAll(".header-nav a");
+const interestCloud =
+document.querySelector(".interest-cloud");
 
-navLinks.forEach(link => {
+if(interestCloud){
 
-  link.addEventListener("click", () => {
+  interestCloud.addEventListener(
+    "wheel",
+    (event) => {
 
-    navLinks.forEach(item => {
-      item.style.color = "";
-    });
+      if(window.innerWidth <= 800){
 
-    link.style.color = "#111";
+        event.preventDefault();
 
-  });
+        interestCloud.scrollLeft +=
+          event.deltaY;
 
-});
+      }
+
+    },
+    {passive:false}
+  );
+
+}
 
 </script>
 
