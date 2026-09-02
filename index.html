@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>KANNA — Interactive Resume</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Helvetica Neue",
+        "Noto Sans JP",
+        sans-serif;
+
+    background: #f5f4f0;
+    color: #171717;
+    line-height: 1.8;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+section {
+    position: relative;
+    padding: 120px 8%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* ---------- opening ---------- */
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8%;
+    background: #111;
+    color: #f5f4f0;
+}
+
+.hero-small {
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    opacity: 0.6;
+    margin-bottom: 30px;
+}
+
+.hero-year {
+    font-size: clamp(100px, 20vw, 240px);
+    line-height: 0.8;
+    font-weight: 700;
+    letter-spacing: -0.07em;
+}
+
+.hero-title {
+    font-size: clamp(30px, 5vw, 65px);
+    margin-top: 50px;
+    letter-spacing: -0.03em;
+}
+
+.scroll {
+    margin-top: 80px;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    opacity: 0.6;
+}
+
+/* ---------- common ---------- */
+
+.label {
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    color: #777;
+    margin-bottom: 15px;
+}
+
+h2 {
+    font-size: clamp(40px, 7vw, 90px);
+    line-height: 1;
+    letter-spacing: -0.05em;
+    margin-bottom: 60px;
+}
+
+h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.fade {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 1s ease;
+}
+
+.fade.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ---------- profile ---------- */
+
+.profile {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.profile-photo {
+    aspect-ratio: 1 / 1;
+    background: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #888;
+    font-size: 13px;
+}
+
+.profile-info {
+    display: grid;
+    gap: 25px;
+}
+
+.profile-name {
+    font-size: clamp(50px, 8vw, 100px);
+    line-height: 0.9;
+    letter-spacing: -0.06em;
+}
+
+.profile-sub {
+    color: #777;
+    font-size: 14px;
+}
+
+/* ---------- timeline ---------- */
+
+.timeline {
+    border-left: 1px solid #aaa;
+    margin-left: 15px;
+    padding-left: 45px;
+}
+
+.event {
+    position: relative;
+    margin-bottom: 80px;
+}
+
+.event::before {
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #171717;
+    left: -52px;
+    top: 10px;
+}
+
+.year {
+    font-size: 14px;
+    color: #777;
+    letter-spacing: 0.1em;
+    margin-bottom: 5px;
+}
+
+.event-title {
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.event-description {
+    color: #666;
+    max-width: 600px;
+}
+
+/* ---------- story ---------- */
+
+.dark-section {
+    max-width: none;
+    background: #171717;
+    color: #f5f4f0;
+    padding-left: 12%;
+    padding-right: 12%;
+}
+
+.dark-section .label {
+    color: #999;
+}
+
+.question {
+    font-size: clamp(35px, 6vw, 75px);
+    line-height: 1.2;
+    letter-spacing: -0.04em;
+    max-width: 950px;
+    margin-bottom: 80px;
+}
+
+.question small {
+    display: block;
+    font-size: 14px;
+    color: #999;
+    letter-spacing: 0.15em;
+    margin-bottom: 25px;
+}
+
+.story-text {
+    max-width: 720px;
+    font-size: 17px;
+    color: #ccc;
+}
+
+/* ---------- turning point ---------- */
+
+.turning {
+    text-align: center;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.turning-word {
+    font-size: clamp(70px, 15vw, 180px);
+    font-weight: 700;
+    letter-spacing: -0.08em;
+}
+
+.arrow {
+    font-size: 50px;
+    margin: 30px;
+    color: #888;
+}
+
+/* ---------- experience ---------- */
+
+.experience-card {
+    border-top: 1px solid #aaa;
+    padding: 35px 0;
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 30px;
+}
+
+.experience-date {
+    color: #777;
+    font-size: 14px;
+}
+
+.experience-title {
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.experience-text {
+    color: #666;
+}
+
+/* ---------- skills ---------- */
+
+.skill-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.skill {
+    background: #fff;
+    padding: 30px;
+    border: 1px solid #ddd;
+}
+
+.skill-name {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.stars {
+    font-size: 25px;
+    letter-spacing: 5px;
+}
+
+.skill-description {
+    color: #777;
+    font-size: 13px;
+    margin-top: 10px;
+}
+
+/* ---------- interests ---------- */
+
+.interests {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.interest {
+    border: 1px solid #aaa;
+    padding: 15px 25px;
+    border-radius: 100px;
+    background: #fff;
+}
+
+/* ---------- vision ---------- */
+
+.vision {
+    max-width: 850px;
+}
+
+.vision-big {
+    font-size: clamp(35px, 6vw, 70px);
+    line-height: 1.2;
+    letter-spacing: -0.04em;
+    margin-bottom: 50px;
+}
+
+/* ---------- final ---------- */
+
+.final {
+    max-width: none;
+    min-height: 90vh;
+    background: #111;
+    color: #f5f4f0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.final-title {
+    font-size: clamp(60px, 13vw, 170px);
+    letter-spacing: -0.08em;
+    line-height: 0.9;
+}
+
+.final-text {
+    margin-top: 60px;
+    color: #aaa;
+    max-width: 600px;
+}
+
+/* ---------- responsive ---------- */
+
+@media (max-width: 700px) {
+
+    section {
+        padding: 90px 7%;
+    }
+
+    .profile {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .skill-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .experience-card {
+        grid-template-columns: 1fr;
+        gap: 5px;
+    }
+
+    .dark-section {
+        padding-left: 7%;
+        padding-right: 7%;
+    }
+}
+</style>
+</head>
+
+
+<body>
+
+<!-- =========================
+     OPENING
+========================= -->
+
+<section class="hero">
+
+    <div class="hero-small">
+        INTERACTIVE RESUME / 2026
+    </div>
+
+    <div class="hero-year">
+        2007
+    </div>
+
+    <div class="hero-title">
+        KANNA'S JOURNEY
+    </div>
+
+    <div class="scroll">
+        ↓ SCROLL TO EXPLORE
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PROFILE
+========================= -->
+
+<section>
+
+    <div class="label">01 / PROFILE</div>
+
+    <div class="profile">
+
+        <div class="profile-photo">
+            PHOTO
+        </div>
+
+        <div class="profile-info fade">
+
+            <div class="profile-name">
+                KANNA<br>
+                MAEDA
+            </div>
+
+            <div class="profile-sub">
+                前田 栞那
+            </div>
+
+            <div>
+                <strong>ZEN University</strong><br>
+                知能情報社会学部 / 知能情報社会学科
+            </div>
+
+            <div>
+                <strong>INTEREST</strong><br>
+                AI / Data Analysis / Human / Welfare / Social Design
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     HISTORY
+========================= -->
+
+<section>
+
+    <div class="label">02 / EDUCATION & HISTORY</div>
+
+    <h2 class="fade">
+        MY JOURNEY
+    </h2>
+
+    <div class="timeline">
+
+        <div class="event fade">
+
+            <div class="year">2007</div>
+
+            <div class="event-title">
+                THE BEGINNING
+            </div>
+
+            <div class="event-description">
+                私の人生が始まる。
+            </div>
+
+        </div>
+
+
+        <div class="event fade">
+
+            <div class="year">2023.04</div>
+
+            <div class="event-title">
+                兵庫県立国際高等学校
+            </div>
+
+            <div class="event-description">
+                国際科へ進学。
+            </div>
+
+        </div>
+
+
+        <div class="event fade">
+
+            <div class="year">2025.07</div>
+
+            <div class="event-title">
+                中途退学
+            </div>
+
+            <div class="event-description">
+                高校を中退し、自分に合った新しい道を探し始める。
+            </div>
+
+        </div>
+
+
+        <div class="event fade">
+
+            <div class="year">2025.08</div>
+
+            <div class="event-title">
+                高等学校卒業程度認定試験
+            </div>
+
+            <div class="event-description">
+                高卒認定を取得。
+            </div>
+
+        </div>
+
+
+        <div class="event fade">
+
+            <div class="year">2025.10 — 2026.01</div>
+
+            <div class="event-title">
+                就労継続支援B型事業所 HOPE
+            </div>
+
+            <div class="event-description">
+                支援員として働き、支援の現場を経験する。
+            </div>
+
+        </div>
+
+
+        <div class="event fade">
+
+            <div class="year">2026.04 —</div>
+
+            <div class="event-title">
+                ZEN University
+            </div>
+
+            <div class="event-description">
+                AI活用やデータ分析を学ぶ。
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     STORY
+========================= -->
+
+<section class="dark-section">
+
+    <div class="label">03 / MY STORY</div>
+
+    <div class="question fade">
+
+        <small>THE FIRST QUESTION</small>
+
+        「なぜ自分には<br>
+        できないことがあるのだろう？」
+
+    </div>
+
+    <div class="story-text fade">
+
+        <p>
+            幼少期から家庭環境や学校生活の中で、
+            いじめや虐待を経験しました。
+        </p>
+
+        <br>
+
+        <p>
+            高校生の頃に複雑性PTSDとADHDの診断を受け、
+            高校を中退しました。
+        </p>
+
+        <br>
+
+        <p>
+            当時の私は、とにかく普通の生活に戻りたいという
+            思いでいっぱいでした。
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     TURNING POINT
+========================= -->
+
+<section class="turning">
+
+    <div class="label">04 / TURNING POINT</div>
+
+    <div class="turning-word fade">
+        WHY?
+    </div>
+
+    <div class="arrow fade">
+        ↓
+    </div>
+
+    <div class="turning-word fade">
+        HOW?
+    </div>
+
+</section>
+
+
+<!-- =========================
+     LEARNING
+========================= -->
+
+<section>
+
+    <div class="label">05 / LEARNING</div>
+
+    <h2 class="fade">
+        FROM RECOVERY<br>
+        TO UNDERSTANDING
+    </h2>
+
+    <div class="story-text fade">
+
+        <p>
+            専門書を読んだり、AIを活用して自分の考えを
+            整理したりするようになりました。
+        </p>
+
+        <br>
+
+        <p>
+            最初は「どうすれば回復できるか」を知ることが目的でした。
+        </p>
+
+        <br>
+
+        <p>
+            しかし学び続けるうちに、本当に知りたかったのは
+            「どうすれば普通に戻れるか」ではなく、
+            「なぜ自分はこのような状態になったのか」だと
+            気づきました。
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     THINKING
+========================= -->
+
+<section class="dark-section">
+
+    <div class="label">06 / HOW I THINK</div>
+
+    <h2 class="fade">
+        FROM EMOTION<br>
+        TO STRUCTURE
+    </h2>
+
+    <div class="turning fade">
+
+        <div>EXPERIENCE</div>
+        <div>↓</div>
+        <div>UNDERSTANDING</div>
+        <div>↓</div>
+        <div>CAUSE</div>
+        <div>↓</div>
+        <div>STRUCTURE</div>
+
+    </div>
+
+    <div class="story-text fade">
+
+        <p>
+            自分の特性や経験を理解するにつれて、
+            それまで感情だけで捉えていた出来事を
+            客観的に見られるようになりました。
+        </p>
+
+        <br>
+
+        <p>
+            問題を解決するためには、感情や個人の努力だけではなく、
+            その背景にある原因や仕組みを理解することが
+            大切だと考えるようになりました。
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     EXPERIENCE
+========================= -->
+
+<section>
+
+    <div class="label">07 / WORK EXPERIENCE</div>
+
+    <h2 class="fade">
+        EXPERIENCE
+    </h2>
+
+
+    <div class="experience-card fade">
+
+        <div class="experience-date">
+            2023.09 — 2025.09
+        </div>
+
+        <div>
+            <div class="experience-title">
+                株式会社フォーシーズ
+            </div>
+
+            <div class="experience-text">
+                ピザーラ西宮店
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="experience-card fade">
+
+        <div class="experience-date">
+            2025.10 — 2026.01
+        </div>
+
+        <div>
+            <div class="experience-title">
+                就労継続支援B型事業所 HOPE
+            </div>
+
+            <div class="experience-text">
+                支援員として就労支援の現場を経験。
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="experience-card fade">
+
+        <div class="experience-date">
+            2026.02 — 2026.03
+        </div>
+
+        <div>
+            <div class="experience-title">
+                就労移行ITスクール新大阪
+            </div>
+
+            <div class="experience-text">
+                IT・就労支援の現場を経験。
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     INSIGHT
+========================= -->
+
+<section>
+
+    <div class="label">08 / INSIGHT</div>
+
+    <h2 class="fade">
+        I SAW THE<br>
+        SAME QUESTION<br>
+        OUTSIDE MYSELF.
+    </h2>
+
+    <div class="story-text fade">
+
+        <p>
+            支援の現場では、
+            「もっと早く気づけていれば防げたかもしれない」
+            と感じる場面を何度も経験しました。
+        </p>
+
+        <br>
+
+        <p>
+            そこから、精神的な不調は個人だけの問題ではなく、
+            支援の仕組みや環境にも課題があるのではないかと
+            考えるようになりました。
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     SKILLS
+========================= -->
+
+<section>
+
+    <div class="label">09 / SKILLS</div>
+
+    <h2 class="fade">
+        SKILL LEVEL
+    </h2>
+
+    <p class="label">
+        SELF ASSESSMENT / 2026
+    </p>
+
+    <div class="skill-grid">
+
+        <div class="skill fade">
+            <div class="skill-name">
+                Abstract Thinking
+            </div>
+            <div class="stars">
+                ★★★★★
+            </div>
+            <div class="skill-description">
+                情報を抽象化し、共通する構造を考える。
+            </div>
+        </div>
+
+
+        <div class="skill fade">
+            <div class="skill-name">
+                Pattern Recognition
+            </div>
+            <div class="stars">
+                ★★★★★
+            </div>
+            <div class="skill-description">
+                異なる情報のつながりやパターンを見つける。
+            </div>
+        </div>
+
+
+        <div class="skill fade">
+            <div class="skill-name">
+                Idea Generation
+            </div>
+            <div class="stars">
+                ★★★★★
+            </div>
+            <div class="skill-description">
+                一つのテーマから複数の可能性を考える。
+            </div>
+        </div>
+
+
+        <div class="skill fade">
+            <div class="skill-name">
+                AI Utilization
+            </div>
+            <div class="stars">
+                ★★★★☆
+            </div>
+            <div class="skill-description">
+                AIを思考整理・学習・制作に活用する。
+            </div>
+        </div>
+
+
+        <div class="skill fade">
+            <div class="skill-name">
+                Data Analysis
+            </div>
+            <div class="stars">
+                ★★★☆☆
+            </div>
+            <div class="skill-description">
+                現在学習中。データから人や社会を理解する力を伸ばしている。
+            </div>
+        </div>
+
+
+        <div class="skill fade">
+            <div class="skill-name">
+                Python
+            </div>
+            <div class="stars">
+                ★★★☆☆
+            </div>
+            <div class="skill-description">
+                基礎から実践的な活用へ学習中。
+            </div>
+        </div>
+
+
+        <div class="skill fade">
+            <div class="skill-name">
+                Communication
+            </div>
+            <div class="stars">
+                ★★★★☆
+            </div>
+            <div class="skill-description">
+                相手との対話を通して考えを深める。
+            </div>
+        </div>
+
+
+        <div class="skill fade">
+            <div class="skill-name">
+                Facilitation
+            </div>
+            <div class="stars">
+                ★★★★☆
+            </div>
+            <div class="skill-description">
+                対話や協働を通して考えを整理する。
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     INTEREST
+========================= -->
+
+<section>
+
+    <div class="label">10 / INTEREST</div>
+
+    <h2 class="fade">
+        WHAT I'M<br>
+        CURIOUS ABOUT
+    </h2>
+
+    <div class="interests fade">
+
+        <div class="interest">AI</div>
+        <div class="interest">DATA</div>
+        <div class="interest">HUMAN</div>
+        <div class="interest">WELFARE</div>
+        <div class="interest">MENTAL HEALTH</div>
+        <div class="interest">SOCIAL DESIGN</div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     QUESTION
+========================= -->
+
+<section class="dark-section">
+
+    <div class="label">11 / MY QUESTION</div>
+
+    <div class="question fade">
+
+        <small>THE QUESTION I WANT TO EXPLORE</small>
+
+        「なぜ課題が起こるのか？」
+
+    </div>
+
+    <div class="question fade">
+
+        「どうすれば<br>
+        仕組みとして解決できるのか？」
+
+    </div>
+
+    <div class="story-text fade">
+
+        <p>
+            AIやデータを活用しながら、
+            一人ひとりに合った支援につながる
+            仕組みについて考えていきたいです。
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     VISION
+========================= -->
+
+<section>
+
+    <div class="label">12 / VISION</div>
+
+    <div class="vision">
+
+        <div class="vision-big fade">
+
+            AI × DATA × HUMAN
+
+        </div>
+
+        <div class="story-text fade">
+
+            <p>
+                現在はZEN大学でAI活用やデータ分析を学んでいます。
+            </p>
+
+            <br>
+
+            <p>
+                AIとの対話を通して自分の思考を整理できた経験や、
+                データ分析によって人それぞれ異なる変化や
+                回復の過程を理解できる可能性に魅力を感じています。
+            </p>
+
+            <br>
+
+            <p>
+                将来的には、一人ひとりに合った支援につながる
+                仕組みづくりに携わりたいと考えています。
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     WHY SUZUKAN
+========================= -->
+
+<section>
+
+    <div class="label">13 / WHY SUZUKAN SEMINAR</div>
+
+    <h2 class="fade">
+        I DON'T HAVE<br>
+        THE ANSWER YET.
+    </h2>
+
+    <div class="story-text fade">
+
+        <p>
+            私はまだ、自分の問いに対する答えを持っていません。
+        </p>
+
+        <br>
+
+        <p>
+            だからこそ、異なる考え方を持つ人と出会い、
+            対話し、問いを深めたいと考えています。
+        </p>
+
+        <br>
+
+        <p>
+            すずかんゼミでの出会いと学びを通して、
+            「なぜ課題が起こるのか」
+            「どうすれば仕組みとして解決できるのか」
+            を考え続けたいです。
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     MOTTO
+========================= -->
+
+<section class="dark-section">
+
+    <div class="label">14 / MY MOTTO</div>
+
+    <div class="question fade">
+
+        「好きな人と、<br>
+        好きな場所で、<br>
+        好きなことをする。」
+
+    </div>
+
+    <div class="story-text fade">
+
+        <p>
+            自分では環境を選べなかった経験があるからこそ、
+            これからは自分で人生を選び、
+            自分らしく生きられる人を増やしたい。
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FINAL
+========================= -->
+
+<section class="final">
+
+    <div class="label">
+        NEXT CHAPTER
+    </div>
+
+    <div class="final-title fade">
+        LET'S<br>
+        FIND<br>
+        OUT.
+    </div>
+
+    <div class="final-text fade">
+
+        私はまだ答えを持っていない。<br>
+        だから、研究したい。
+
+        <br><br>
+
+        <strong>SUZUKAN SEMINAR / KANNA MAEDA</strong>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script>
+
+const elements = document.querySelectorAll(".fade");
+
+const observer = new IntersectionObserver(
+    (entries) => {
+
+        entries.forEach((entry) => {
+
+            if (entry.isIntersecting) {
+
+                entry.target.classList.add("show");
+
+            }
+
+        });
+
+    },
+    {
+        threshold: 0.15
+    }
+);
+
+elements.forEach((element) => {
+
+    observer.observe(element);
+
+});
+
+</script>
+
+</body>
+</html>
