@@ -372,6 +372,74 @@ section{
 
 
 /* =====================================================
+   WHY SUZUKAN NOW
+===================================================== */
+
+.why-now{
+  padding-top:120px;
+  padding-bottom:150px;
+}
+
+.why-now-grid{
+  width:100%;
+  display:grid;
+  grid-template-columns:.9fr 1.1fr;
+  gap:10vw;
+  align-items:start;
+}
+
+.why-now-copy{
+  max-width:650px;
+}
+
+.why-now-lead{
+  font-size:clamp(28px,4vw,54px);
+  line-height:1.45;
+  letter-spacing:-.055em;
+  font-weight:300;
+}
+
+.why-now-lead span{
+  color:#888;
+}
+
+.why-now-text{
+  margin-top:32px;
+  font-size:13px;
+  line-height:2.15;
+  color:#666;
+}
+
+.why-now-points{
+  margin-top:45px;
+  border-top:1px solid #d5d5d0;
+}
+
+.why-now-points div{
+  padding:17px 0;
+  border-bottom:1px solid #d5d5d0;
+  font-size:10px;
+  color:#999;
+  letter-spacing:.08em;
+}
+
+.why-now-points strong{
+  margin-left:20px;
+  color:#111;
+  font-weight:400;
+  letter-spacing:0;
+}
+
+.why-now + .journey{
+  padding-top:80px;
+}
+
+.strength-level{
+  font-size:8px;
+  letter-spacing:.14em;
+}
+
+/* =====================================================
    INTRO
 ===================================================== */
 
@@ -1550,6 +1618,37 @@ footer{
 
 
   /* -----------------------------------------------
+     MOBILE WHY SUZUKAN NOW
+  ----------------------------------------------- */
+
+  .why-now{
+    padding:90px 20px 105px;
+  }
+
+  .why-now-grid{
+    display:flex;
+    flex-direction:column;
+    gap:48px;
+  }
+
+  .why-now-lead{
+    font-size:clamp(29px,8.5vw,42px);
+  }
+
+  .why-now-text{
+    font-size:11px;
+    line-height:2;
+  }
+
+  .why-now-points{
+    margin-top:35px;
+  }
+
+  .why-now + .journey{
+    padding-top:70px;
+  }
+
+  /* -----------------------------------------------
      MOBILE INTRO
   ----------------------------------------------- */
 
@@ -2283,6 +2382,8 @@ footer{
 
     <a href="#about">ABOUT</a>
 
+    <a href="#why-suzukan">WHY SUZUKAN</a>
+
     <a href="#journey">JOURNEY</a>
 
     <a href="#thinking">THINKING</a>
@@ -2335,8 +2436,8 @@ footer{
       </div>
 
       <div class="hero-intent">
-        現場を知り、問いを持ち、試してみる。<br>
-        そのための一歩として、すずかんゼミに応募します。
+        現場を知り、問いを深め、実際に試す。<br>
+        そのための環境として、すずかんゼミに応募します。
       </div>
 
 
@@ -2428,14 +2529,14 @@ footer{
       </div>
 
       <div class="photo-story">
-        <div class="photo-story-label">A PHOTO THAT FEELS LIKE ME</div>
+        <div class="photo-story-label">ABOUT THE PHOTO</div>
         <div class="photo-story-title">
-          思いついたら、まずやってみる。
+          好きなものには、ちょっと全力。
         </div>
         <div class="photo-story-text">
-          好きな作品のキャラクターになりきろうとして、紙とテープで即席の目を作ったときの一枚です。<br>
-          完成度よりも、思いついたことを実際にやってみることが好き。<br>
-          この「気になったら試してみる」は、私の学び方にもつながっています。
+          好きな作品のキャラクターになりきって遊んだときの一枚です。<br>
+          「面白そう」と思ったことには、少し変なくらい全力で飛び込む。<br>
+          そんな好奇心と行動力が、自分らしさの一つだと思い、この写真を選びました。
         </div>
       </div>
     </div>
@@ -2488,7 +2589,55 @@ footer{
 
 
 <!-- =====================================================
-     02 JOURNEY
+     02 WHY SUZUKAN NOW
+===================================================== -->
+
+<section class="why-now" id="why-suzukan">
+
+  <div class="why-now-grid">
+
+    <div class="reveal">
+      <div class="section-number">
+        02 / WHY SUZUKAN NOW
+      </div>
+
+      <h2 class="section-heading">
+        WHY<br>
+        SUZUKAN?
+      </h2>
+    </div>
+
+    <div class="why-now-copy reveal">
+      <div class="why-now-lead">
+        目指しているのは、<br>
+        現場の困りごとを<br>
+        <span>仕組みの側から解決できる人。</span>
+      </div>
+
+      <div class="why-now-text">
+        そのためには、技術だけでなく、現場にいる人の視点や、
+        自分とは違う考え方に触れる必要があると考えています。<br><br>
+
+        すずかんゼミでは、さまざまな背景を持つ人と問いを深めながら、
+        「自分ならどう考えるか」を何度も揺さぶってみたい。
+      </div>
+
+      <div class="why-now-points">
+        <div>01 <strong>現場を見る</strong></div>
+        <div>02 <strong>問いを深める</strong></div>
+        <div>03 <strong>異なる視点と出会う</strong></div>
+        <div>04 <strong>実際に試す</strong></div>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     03 JOURNEY
 ===================================================== -->
 
 <section class="journey" id="journey">
@@ -2498,7 +2647,7 @@ footer{
     <div>
 
       <div class="section-number">
-        02 / JOURNEY
+        03 / JOURNEY
       </div>
 
       <h2 class="section-heading">
@@ -2558,7 +2707,7 @@ footer{
       <div class="journey-circle">
 
         <div class="journey-year">
-          2025
+          2025.08
         </div>
 
         <div class="journey-title">
@@ -2568,8 +2717,8 @@ footer{
       </div>
 
       <div class="journey-note">
-        自分のペースで<br>
-        学び直す
+        自分で学び続ける<br>
+        土台をつくる
       </div>
 
     </div>
@@ -2583,7 +2732,7 @@ footer{
       <div class="journey-circle">
 
         <div class="journey-year">
-          2025
+          2025.12
         </div>
 
         <div class="journey-title">
@@ -2593,8 +2742,8 @@ footer{
       </div>
 
       <div class="journey-note">
-        自分の生き方を<br>
-        見つめ直す
+        自分に合う環境を<br>
+        考え直す
       </div>
 
     </div>
@@ -2691,7 +2840,7 @@ footer{
     <div class="reveal">
 
       <div class="section-number">
-        03 / HOW I THINK
+        04 / HOW I THINK
       </div>
 
       <div class="thinking-copy">
@@ -2775,7 +2924,7 @@ footer{
   <div class="experience-head reveal">
 
     <div class="section-number">
-      04 / EXPERIENCE
+      05 / EXPERIENCE
     </div>
 
     <h2 class="section-heading">
@@ -2931,7 +3080,7 @@ footer{
     <div>
 
       <div class="section-number">
-        05 / STRENGTH
+        06 / STRENGTH
       </div>
 
       <h2 class="section-heading">
@@ -2965,7 +3114,7 @@ footer{
 
       <div class="strength-circle">
         <span class="strength-level">
-          5 / 5
+          CORE
         </span>
       </div>
 
@@ -2989,7 +3138,7 @@ footer{
 
       <div class="strength-circle">
         <span class="strength-level">
-          5 / 5
+          CORE
         </span>
       </div>
 
@@ -3013,7 +3162,7 @@ footer{
 
       <div class="strength-circle">
         <span class="strength-level">
-          5 / 5
+          CORE
         </span>
       </div>
 
@@ -3037,7 +3186,7 @@ footer{
 
       <div class="strength-circle">
         <span class="strength-level">
-          4 / 5
+          USING
         </span>
       </div>
 
@@ -3061,7 +3210,7 @@ footer{
 
       <div class="strength-circle">
         <span class="strength-level">
-          2 / 5
+          LEARNING
         </span>
       </div>
 
@@ -3085,7 +3234,7 @@ footer{
 
       <div class="strength-circle">
         <span class="strength-level">
-          2 / 5
+          LEARNING
         </span>
       </div>
 
@@ -3118,7 +3267,7 @@ footer{
     <div class="reveal">
 
       <div class="section-number">
-        06 / CURIOSITY
+        07 / CURIOSITY
       </div>
 
       <div class="curiosity-title">
@@ -3238,7 +3387,7 @@ footer{
 <section class="interest" id="interest">
 
   <div class="section-number reveal">
-    07 / WHAT I CARE ABOUT
+    08 / WHAT I CARE ABOUT
   </div>
 
   <h2 class="section-heading reveal">
@@ -3306,7 +3455,7 @@ footer{
   <div class="question-inner reveal">
 
     <div class="section-number">
-      08 / MY QUESTION
+      09 / MY QUESTION
     </div>
 
     <div class="question-mark">
@@ -3347,7 +3496,7 @@ footer{
     <div class="reveal">
 
       <div class="section-number">
-        09 / WHY SUZUKAN
+        10 / WHAT I WANT TO EXPLORE
       </div>
 
       <div class="suzukan-title">
@@ -3434,7 +3583,7 @@ footer{
   <div class="reveal">
 
     <div class="motto-label">
-      10 / MOTTO
+      11 / MOTTO
     </div>
 
     <div class="motto-text">
