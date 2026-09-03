@@ -226,3 +226,4 @@ export async function onRequest(context) {
   // 未認証ならログイン画面
   return loginPage();
 }
+// redeploy
